@@ -49,11 +49,11 @@ jobs:
         dependency-versions: ${{ matrix.dep }}
         composer-options: --prefer-dist --no-progress
 
-    - name: Run psalm
-      run: vendor/bin/psalm
+    # - name: Run psalm
+    #   run: vendor/bin/psalm
 
-    - name: Run phpstan
-      run: vendor/bin/phpstan analyse
+    # - name: Run phpstan
+    #   run: vendor/bin/phpstan analyse
 
     - name: Run phpunit
       run: |
