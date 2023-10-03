@@ -20,7 +20,7 @@
         <InvalidTemplateParam>
             <errorLevel type="suppress">
                 <!-- https://github.com/vimeo/psalm/issues/8212 -->
-                <file name="src/Trait/ReadableCollectionDecoratorTrait.php"/>
+                <file name="src/Trait/ReadableCollectionDecoratorTrait.php" />
             </errorLevel>
         </InvalidTemplateParam>
     </issueHandlers>

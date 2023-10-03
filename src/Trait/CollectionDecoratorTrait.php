@@ -77,4 +77,32 @@ trait CollectionDecoratorTrait
 
         $wrapped->set($key, $value);
     }
+
+    /**
+     * // param \Closure(T,TKey):bool $p
+     * @return Collection<TKey,T>
+     */
+    public function filter(\Closure $p): Collection
+    {
+        return $this->getWrapped()->filter($p);
+    }
+
+    /**
+     * @template U
+     * @param \Closure(T):U $func
+     * @return Collection<TKey,U>
+     */
+    public function map(\Closure $func): Collection
+    {
+        return $this->getWrapped()->map($func);
+    }
+
+    /**
+     * // param \Closure(TKey,T):bool $p
+     * @return array{0:Collection<TKey,T>,1:Collection<TKey,T>}
+     */
+    public function partition(\Closure $p): array
+    {
+        return $this->getWrapped()->partition($p);
+    }
 }
