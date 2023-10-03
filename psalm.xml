@@ -23,6 +23,20 @@
                 <file name="src/Trait/ReadableCollectionDecoratorTrait.php" />
             </errorLevel>
         </InvalidTemplateParam>
+
+        <!-- for earlier collection versions: -->
+
+        <MoreSpecificReturnType>
+            <errorLevel type="suppress">
+                <file name="src/Trait/CollectionDecoratorTrait.php" />
+            </errorLevel>
+        </MoreSpecificReturnType>
+
+        <MixedArgumentTypeCoercion>
+            <errorLevel type="suppress">
+                <file name="src/Trait/CollectionDecoratorTrait.php" />
+            </errorLevel>
+        </MixedArgumentTypeCoercion>
     </issueHandlers>
 
     <plugins>
