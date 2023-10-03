@@ -48,6 +48,7 @@ trait CollectionDecoratorTrait
 
     /**
      * @param TKey $key
+     * @return T|null
      */
     public function remove(string|int $key): mixed
     {
