@@ -1,13 +1,15 @@
 {
     "name": "rekalogika/doctrine-collections-decorator",
-    "description": "Lets you easily create decorator classes to modify the behaviors of a Doctrine collection",
+    "description": "Lets you easily create decorator classes to dynamically modify the behaviors of Doctrine Collection objects, including the collection objects used by Doctrine ORM in your entities.",
     "homepage": "https://rekalogika.dev/doctrine-collections-decorator",
     "keywords": [
         "doctrine",
         "collection",
         "decorator",
         "trait",
-        "abstract"
+        "abstract",
+        "entity",
+        "wrapper"
     ],
     "license": "MIT",
     "type": "library",
