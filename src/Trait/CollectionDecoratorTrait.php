@@ -24,9 +24,13 @@ trait CollectionDecoratorTrait
 {
     /**
      * @use ReadableCollectionDecoratorTrait<TKey,T>
+     */
+    use ReadableCollectionDecoratorTrait;
+
+    /**
      * @use ArrayAccessDecoratorTrait<TKey,T>
      */
-    use ReadableCollectionDecoratorTrait, ArrayAccessDecoratorTrait;
+    use ArrayAccessDecoratorTrait;
 
     /**
      * @return Collection<TKey,T>

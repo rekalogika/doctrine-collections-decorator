@@ -21,10 +21,12 @@ use Doctrine\Common\Collections\ReadableCollection;
  */
 trait ReadableCollectionDecoratorTrait
 {
+    use CountableDecoratorTrait;
+
     /**
      * @use IteratorAggregateDecoratorTrait<TKey,T>
      */
-    use CountableDecoratorTrait, IteratorAggregateDecoratorTrait;
+    use IteratorAggregateDecoratorTrait;
 
     /**
      * @return ReadableCollection<TKey,T>

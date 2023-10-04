@@ -15,7 +15,6 @@ namespace Rekalogika\Collections\Decorator;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Selectable;
-use Rekalogika\Collections\Decorator\Trait\CollectionDecoratorTrait;
 use Rekalogika\Collections\Decorator\Trait\SelectableDecoratorTrait;
 
 /**
@@ -24,8 +23,7 @@ use Rekalogika\Collections\Decorator\Trait\SelectableDecoratorTrait;
  * @extends AbstractCollectionDecorator<TKey, T>
  * @implements Selectable<TKey, T>
  */
-abstract class AbstractSelectableCollectionDecorator extends AbstractCollectionDecorator
-implements Selectable
+abstract class AbstractSelectableCollectionDecorator extends AbstractCollectionDecorator implements Selectable
 {
     /**
      * @use SelectableDecoratorTrait<TKey,T>

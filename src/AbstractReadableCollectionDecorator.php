@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Rekalogika\Collections\Decorator;
 
 use Doctrine\Common\Collections\ReadableCollection;
-use Rekalogika\Collections\Decorator\DxTrait\ArrayAccessDecoratorDxTrait;
 use Rekalogika\Collections\Decorator\Trait\ReadableCollectionDecoratorTrait;
 
 /**
