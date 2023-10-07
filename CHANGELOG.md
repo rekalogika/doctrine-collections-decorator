@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1
+
+* Selectable decorators now accept collection without Selectable typehint, for
+  convenience. The checking is now done in the constructors, instead of the
+  caller.
+
 ## 2.0.0
 
 * Add `AbstractSelectableReadableCollectionDecorator`

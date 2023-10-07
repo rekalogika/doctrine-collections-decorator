@@ -25,10 +25,20 @@ use Rekalogika\Collections\Decorator\AbstractDecorator\AbstractSelectableCollect
 class SelectableCollectionDecorator extends AbstractSelectableCollectionDecorator
 {
     /**
-     * @param Collection<TKey,T>&Selectable<TKey,T> $wrapped
+     * @var Collection<TKey,T>&Selectable<TKey,T>
      */
-    public function __construct(private Collection&Selectable $wrapped)
+    private Collection&Selectable $wrapped;
+
+    /**
+     * @param Collection<TKey,T> $wrapped
+     */
+    public function __construct(Collection $wrapped)
     {
+        if (!$wrapped instanceof Selectable) {
+            throw new \InvalidArgumentException('Wrapped collection must be instance of Selectable');
+        }
+
+        $this->wrapped = $wrapped;
     }
     
     /**

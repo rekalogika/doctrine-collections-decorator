@@ -25,12 +25,22 @@ use Rekalogika\Collections\Decorator\AbstractDecorator\AbstractSelectableReadabl
 class SelectableReadableCollectionDecorator extends AbstractSelectableReadableCollectionDecorator
 {
     /**
-     * @param ReadableCollection<TKey,T>&Selectable<TKey,T> $wrapped
+     * @var ReadableCollection<TKey,T>&Selectable<TKey,T>
      */
-    public function __construct(private ReadableCollection&Selectable $wrapped)
+    private ReadableCollection&Selectable $wrapped;
+
+    /**
+     * @param ReadableCollection<TKey,T> $wrapped
+     */
+    public function __construct(ReadableCollection $wrapped)
     {
+        if (!$wrapped instanceof Selectable) {
+            throw new \InvalidArgumentException('Wrapped collection must be instance of Selectable');
+        }
+
+        $this->wrapped = $wrapped;
     }
-    
+
     /**
      * @return ReadableCollection<TKey,T>&Selectable<TKey,T>
      */
