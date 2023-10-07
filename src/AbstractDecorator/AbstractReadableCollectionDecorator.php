@@ -11,7 +11,7 @@ declare(strict_types=1);
  * that was distributed with this source code.
  */
 
-namespace Rekalogika\Collections\Decorator;
+namespace Rekalogika\Collections\Decorator\AbstractDecorator;
 
 use Doctrine\Common\Collections\ReadableCollection;
 use Rekalogika\Collections\Decorator\Trait\ReadableCollectionDecoratorTrait;

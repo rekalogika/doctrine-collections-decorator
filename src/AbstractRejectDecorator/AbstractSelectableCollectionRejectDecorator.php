@@ -11,24 +11,24 @@ declare(strict_types=1);
  * that was distributed with this source code.
  */
 
-namespace Rekalogika\Collections\Decorator;
+namespace Rekalogika\Collections\Decorator\AbstractRejectDecorator;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Selectable;
-use Rekalogika\Collections\Decorator\Trait\SelectableDecoratorTrait;
+use Rekalogika\Collections\Decorator\RejectTrait\SelectableRejectDecoratorTrait;
 
 /**
  * @template TKey of array-key
  * @template T
- * @extends AbstractCollectionDecorator<TKey, T>
+ * @extends AbstractCollectionRejectDecorator<TKey, T>
  * @implements Selectable<TKey, T>
  */
-abstract class AbstractSelectableCollectionDecorator extends AbstractCollectionDecorator implements Selectable
+abstract class AbstractSelectableCollectionRejectDecorator extends AbstractCollectionRejectDecorator implements Selectable
 {
     /**
-     * @use SelectableDecoratorTrait<TKey,T>
+     * @use SelectableRejectDecoratorTrait<TKey,T>
      */
-    use SelectableDecoratorTrait;
+    use SelectableRejectDecoratorTrait;
 
     /**
      * @return Collection<TKey,T>&Selectable<TKey,T>

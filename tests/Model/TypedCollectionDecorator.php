@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Rekalogika\Collections\Decorator\Tests\Model;
 
 use Doctrine\Common\Collections\Collection;
-use Rekalogika\Collections\Decorator\AbstractCollectionDecorator;
+use Rekalogika\Collections\Decorator\AbstractDecorator\AbstractCollectionDecorator;
 
 /**
  * @extends AbstractCollectionDecorator<array-key,Book>
