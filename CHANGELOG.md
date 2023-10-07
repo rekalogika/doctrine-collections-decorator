@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.1
+
+* Fix `SelectableReadableCollectionRejectDecorator`
+
 ## 2.1.0
 
 * Selectable decorators now accept collection without Selectable typehint, for

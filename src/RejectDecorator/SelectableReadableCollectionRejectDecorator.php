@@ -22,7 +22,7 @@ use Rekalogika\Collections\Decorator\AbstractRejectDecorator\AbstractSelectableR
  * @template T
  * @extends AbstractSelectableReadableCollectionRejectDecorator<TKey,T>
  */
-class SelectableReadableCollectionRejectRejectDecorator extends AbstractSelectableReadableCollectionRejectDecorator
+class SelectableReadableCollectionRejectDecorator extends AbstractSelectableReadableCollectionRejectDecorator
 {
     /**
      * @param ReadableCollection<TKey,T>&Selectable<TKey,T> $wrapped
