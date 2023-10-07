@@ -13,15 +13,11 @@ declare(strict_types=1);
 
 namespace Rekalogika\Collections\Decorator\Tests\Model;
 
-class Book
-{
-    public function __construct(
-        private string $title,
-    ) {
-    }
+use Doctrine\Common\Collections\ArrayCollection;
 
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
+/**
+ * @extends ArrayCollection<int|string,Book>
+ */
+class BookShelf extends ArrayCollection
+{
 }
