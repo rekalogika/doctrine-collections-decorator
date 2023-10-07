@@ -13,15 +13,7 @@ declare(strict_types=1);
 
 namespace Rekalogika\Collections\Decorator\Tests;
 
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\Criteria;
-use Doctrine\Common\Collections\ReadableCollection;
-use Doctrine\Common\Collections\Selectable;
 use PHPUnit\Framework\TestCase;
-use Rekalogika\Collections\Decorator\Decorator\CollectionDecorator;
-use Rekalogika\Collections\Decorator\Decorator\ReadableCollectionDecorator;
-use Rekalogika\Collections\Decorator\Decorator\SelectableCollectionDecorator;
-use Rekalogika\Collections\Decorator\Decorator\SelectableReadableCollectionDecorator;
 use Rekalogika\Collections\Decorator\Tests\Model\Book;
 use Rekalogika\Collections\Decorator\Tests\Model\BookShelf;
 use Rekalogika\Collections\Decorator\ExtraLazy\ExtraLazyCollection;
