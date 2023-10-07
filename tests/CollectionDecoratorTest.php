@@ -24,6 +24,7 @@ use Rekalogika\Collections\Decorator\Decorator\SelectableCollectionDecorator;
 use Rekalogika\Collections\Decorator\Decorator\SelectableReadableCollectionDecorator;
 use Rekalogika\Collections\Decorator\Tests\Model\Book;
 use Rekalogika\Collections\Decorator\Tests\Model\BookShelf;
+use Rekalogika\Collections\Decorator\ExtraLazy\ExtraLazyCollection;
 
 class CollectionDecoratorTest extends TestCase
 {
