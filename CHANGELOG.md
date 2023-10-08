@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.2
+
+* Fix nullable intersection type problem with PHP 8.1
+* Only keep `ExtraLazyCollection`
+
 ## 2.1.1
 
 * Fix `SelectableReadableCollectionRejectDecorator`
