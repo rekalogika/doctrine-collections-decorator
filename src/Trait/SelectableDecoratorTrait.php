@@ -31,7 +31,7 @@ trait SelectableDecoratorTrait
     /**
      * @return ReadableCollection<TKey,T>&Selectable<TKey,T>
      */
-    public function matching(Criteria $criteria): ReadableCollection
+    public function matching(Criteria $criteria): ReadableCollection&Selectable
     {
         return $this->getWrapped()->matching($criteria);
     }

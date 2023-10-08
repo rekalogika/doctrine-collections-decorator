@@ -31,7 +31,7 @@ trait SelectableRejectDecoratorTrait
     /**
      * @return ReadableCollection<TKey,T>&Selectable<TKey,T>
      */
-    public function matching(Criteria $criteria): ReadableCollection
+    public function matching(Criteria $criteria): ReadableCollection&Selectable
     {
         throw new \BadMethodCallException(sprintf('Method %s is disabled', __METHOD__));
     }
