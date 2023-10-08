@@ -18,7 +18,6 @@ use Doctrine\Common\Collections\Criteria;
 use Doctrine\Common\Collections\ReadableCollection;
 use Doctrine\Common\Collections\Selectable;
 use Rekalogika\Collections\Decorator\AbstractRejectDecorator\AbstractSelectableCollectionRejectDecorator;
-use Rekalogika\Collections\Decorator\Trait\CountableDecoratorTrait;
 
 /**
  * @template TKey of array-key
@@ -27,8 +26,6 @@ use Rekalogika\Collections\Decorator\Trait\CountableDecoratorTrait;
  */
 class ExtraLazyCollection extends AbstractSelectableCollectionRejectDecorator
 {
-    use CountableDecoratorTrait;
-
     /**
      * @var Collection<TKey,T>&Selectable<TKey,T>
      */
@@ -46,53 +43,36 @@ class ExtraLazyCollection extends AbstractSelectableCollectionRejectDecorator
         $this->wrapped = $wrapped;
     }
 
-    /**
-     * @return Collection<TKey,T>&Selectable<TKey,T>
-     */
     protected function getWrapped(): Collection&Selectable
     {
         return $this->wrapped;
     }
 
-    /**
-     * @template TMaybeContained
-     * @param TMaybeContained $element
-     * @return (TMaybeContained is T ? bool : false)
-     */
     public function contains(mixed $element): bool
     {
         return $this->getWrapped()->contains($element);
     }
 
-    /**
-     * @param TKey $key
-     */
     public function containsKey(string|int $key): bool
     {
         return $this->getWrapped()->containsKey($key);
     }
 
-    /**
-     * @param TKey $key
-     * @return T|null
-     */
+    public function count(): int
+    {
+        return $this->getWrapped()->count();
+    }
+
     public function get(string|int $key): mixed
     {
         return $this->getWrapped()->get($key);
     }
 
-    /**
-     * @return array<TKey,T>
-     */
     public function slice(int $offset, ?int $length = null): array
     {
         return $this->getWrapped()->slice($offset, $length);
     }
 
-    /**
-     * @param TKey|null $offset
-     * @param T $value
-     */
     public function offsetSet(mixed $offset, mixed $value): void
     {
         if ($offset !== null) {
@@ -102,9 +82,6 @@ class ExtraLazyCollection extends AbstractSelectableCollectionRejectDecorator
         $this->getWrapped()->offsetSet(null, $value);
     }
 
-    /**
-     * @param T $element
-     */
     public function add(mixed $element): void
     {
         $this->getWrapped()->add($element);
