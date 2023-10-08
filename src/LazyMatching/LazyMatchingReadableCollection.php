@@ -30,7 +30,7 @@ class LazyMatchingReadableCollection extends SelectableReadableCollectionDecorat
     /**
      * @var null|(ReadableCollection<TKey,T>&Selectable<TKey,T>)
      */
-    private null|(ReadableCollection&Selectable) $resultCache = null;
+    private $resultCache = null;
 
     /**
      * @param ReadableCollection<TKey,T> $collection
