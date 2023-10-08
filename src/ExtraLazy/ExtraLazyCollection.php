@@ -14,29 +14,42 @@ declare(strict_types=1);
 namespace Rekalogika\Collections\Decorator\ExtraLazy;
 
 use Doctrine\Common\Collections\Collection;
-use Rekalogika\Collections\Decorator\AbstractRejectDecorator\AbstractCollectionRejectDecorator;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ReadableCollection;
+use Doctrine\Common\Collections\Selectable;
+use Rekalogika\Collections\Decorator\AbstractRejectDecorator\AbstractSelectableCollectionRejectDecorator;
 use Rekalogika\Collections\Decorator\Trait\CountableDecoratorTrait;
 
 /**
  * @template TKey of array-key
  * @template T
- * @extends AbstractCollectionRejectDecorator<TKey,T>
+ * @extends AbstractSelectableCollectionRejectDecorator<TKey,T>
  */
-class ExtraLazyCollection extends AbstractCollectionRejectDecorator
+class ExtraLazyCollection extends AbstractSelectableCollectionRejectDecorator
 {
     use CountableDecoratorTrait;
 
     /**
+     * @var Collection<TKey,T>&Selectable<TKey,T>
+     */
+    private Collection $wrapped;
+
+    /**
      * @param Collection<TKey,T> $wrapped
      */
-    public function __construct(private Collection $wrapped)
+    public function __construct(Collection $wrapped)
     {
+        if (!$wrapped instanceof Selectable) {
+            throw new \InvalidArgumentException('The wrapped collection must implement Selectable');
+        }
+
+        $this->wrapped = $wrapped;
     }
 
     /**
-     * @return Collection<TKey,T>
+     * @return Collection<TKey,T>&Selectable<TKey,T>
      */
-    protected function getWrapped(): Collection
+    protected function getWrapped(): Collection&Selectable
     {
         return $this->wrapped;
     }
@@ -95,5 +108,10 @@ class ExtraLazyCollection extends AbstractCollectionRejectDecorator
     public function add(mixed $element): void
     {
         $this->getWrapped()->add($element);
+    }
+
+    public function matching(Criteria $criteria): ReadableCollection&Selectable
+    {
+        return $this->getWrapped()->matching($criteria);
     }
 }

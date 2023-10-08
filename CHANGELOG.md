@@ -4,6 +4,8 @@
 
 * Fix nullable intersection type problem with PHP 8.1
 * Only keep `ExtraLazyCollection`
+* Fix all `matching()` signature to return `ReadableCollection&Selectable`
+* Add `matching()` as safe method to `ExtraLazyCollection`
 
 ## 2.1.1
 
