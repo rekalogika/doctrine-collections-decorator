@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.3
+
+* Improve lazy-matching test.
+
 ## 2.1.2
 
 * Fix nullable intersection type problem with PHP 8.1

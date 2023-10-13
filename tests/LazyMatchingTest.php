@@ -20,6 +20,7 @@ use Rekalogika\Collections\Decorator\LazyMatching\LazyMatchingCollection;
 use Rekalogika\Collections\Decorator\LazyMatching\LazyMatchingReadableCollection;
 use Rekalogika\Collections\Decorator\Tests\Model\Book;
 use Rekalogika\Collections\Decorator\Tests\Model\BookShelf;
+use Rekalogika\Collections\Decorator\Tests\Model\SelectableInterceptor;
 
 class LazyMatchingTest extends TestCase
 {
@@ -30,26 +31,42 @@ class LazyMatchingTest extends TestCase
         $bookShelf->set('b', new Book('B'));
         $bookShelf->set('c', new Book('C'));
 
+        $bookShelf = new SelectableInterceptor($bookShelf);
+
         $matchingResult1 = $bookShelf->matching(new Criteria());
         $this->assertInstanceOf(ArrayCollection::class, $matchingResult1);
+        $this->assertSame(1, $bookShelf->getMatchingCount());
 
         $matchingResult2 = $bookShelf->matching(new Criteria());
         $this->assertInstanceOf(ArrayCollection::class, $matchingResult2);
+        $this->assertSame(2, $bookShelf->getMatchingCount());
 
         $matchingResult3 = $bookShelf->matching(new Criteria());
         $this->assertInstanceOf(ArrayCollection::class, $matchingResult3);
+        $this->assertSame(3, $bookShelf->getMatchingCount());
+
+        $first = $matchingResult3->first();
+        $this->assertSame(3, $bookShelf->getMatchingCount());
 
         // wrap
 
+        $originalBookshelf = $bookShelf;
         $bookShelf = new LazyMatchingCollection($bookShelf);
 
         $matchingResult1 = $bookShelf->matching(new Criteria());
         $this->assertInstanceOf(LazyMatchingReadableCollection::class, $matchingResult1);
+        $this->assertSame(3, $originalBookshelf->getMatchingCount());
+        
 
         $matchingResult2 = $bookShelf->matching(new Criteria());
         $this->assertInstanceOf(LazyMatchingReadableCollection::class, $matchingResult2);
+        $this->assertSame(3, $originalBookshelf->getMatchingCount());
 
         $matchingResult3 = $bookShelf->matching(new Criteria());
         $this->assertInstanceOf(LazyMatchingReadableCollection::class, $matchingResult3);
+        $this->assertSame(3, $originalBookshelf->getMatchingCount());
+
+        $first = $matchingResult3->first();
+        $this->assertSame(4, $originalBookshelf->getMatchingCount());
     }
 }
