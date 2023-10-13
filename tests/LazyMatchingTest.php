@@ -27,7 +27,8 @@ class LazyMatchingTest extends TestCase
     public function testLazyMatching(): void
     {
         $bookShelf = new BookShelf();
-        $bookShelf->set('a', new Book('A'));
+        $firstBook = new Book('A');
+        $bookShelf->set('a', $firstBook);
         $bookShelf->set('b', new Book('B'));
         $bookShelf->set('c', new Book('C'));
 
@@ -47,6 +48,7 @@ class LazyMatchingTest extends TestCase
 
         $first = $matchingResult3->first();
         $this->assertSame(3, $bookShelf->getMatchingCount());
+        $this->assertSame($firstBook, $first);
 
         // wrap
 
@@ -68,5 +70,6 @@ class LazyMatchingTest extends TestCase
 
         $first = $matchingResult3->first();
         $this->assertSame(4, $originalBookshelf->getMatchingCount());
+        $this->assertSame($firstBook, $first);
     }
 }
