@@ -49,13 +49,15 @@ jobs:
         dependency-versions: ${{ matrix.dep }}
         composer-options: --prefer-dist --no-progress
 
-    # - name: Run psalm
-    #   run: vendor/bin/psalm
+    - name: Run psalm
+      run: vendor/bin/psalm
+      if: matrix.dep == 'highest'
 
-    # - name: Run phpstan
-    #   run: vendor/bin/phpstan analyse
+    - name: Run phpstan
+      run: vendor/bin/phpstan analyse
+      if: matrix.dep == 'highest'
 
     - name: Run phpunit
       run: |
-        vendor/bin/phpunit --testdox -v
+        vendor/bin/phpunit --testdox
 
