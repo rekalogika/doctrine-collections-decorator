@@ -3,6 +3,7 @@
 ## 2.1.3
 
 * Improve lazy-matching test.
+* refactor: remove criteria from __construct
 
 ## 2.1.2
 

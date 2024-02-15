@@ -27,6 +27,7 @@ class LazyMatchingCollection extends SelectableCollectionDecorator
 {
     public function matching(Criteria $criteria): ReadableCollection&Selectable
     {
-        return new LazyMatchingReadableCollection($this->getWrapped(), $criteria);
+        return (new LazyMatchingReadableCollection($this->getWrapped()))
+            ->matching($criteria);
     }
 }

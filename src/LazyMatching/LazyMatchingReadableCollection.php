@@ -31,13 +31,13 @@ class LazyMatchingReadableCollection extends SelectableReadableCollectionDecorat
      * @var null|(ReadableCollection<TKey,T>&Selectable<TKey,T>)
      */
     private $resultCache = null;
+    private ?Criteria $criteria = null;
 
     /**
      * @param ReadableCollection<TKey,T> $collection
      */
     public function __construct(
-        ReadableCollection $collection,
-        private ?Criteria $criteria = null
+        ReadableCollection $collection
     ) {
         if (!$collection instanceof Selectable) {
             throw new \InvalidArgumentException('Collection must be selectable');
