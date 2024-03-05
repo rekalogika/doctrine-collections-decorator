@@ -58,7 +58,7 @@ class LazyMatchingTest extends TestCase
         $matchingResult1 = $bookShelf->matching(new Criteria());
         $this->assertInstanceOf(LazyMatchingReadableCollection::class, $matchingResult1);
         $this->assertSame(3, $originalBookshelf->getMatchingCount());
-        
+
 
         $matchingResult2 = $bookShelf->matching(new Criteria());
         $this->assertInstanceOf(LazyMatchingReadableCollection::class, $matchingResult2);
@@ -71,5 +71,32 @@ class LazyMatchingTest extends TestCase
         $first = $matchingResult3->first();
         $this->assertSame(4, $originalBookshelf->getMatchingCount());
         $this->assertSame($firstBook, $first);
+    }
+
+    public function testCriteria(): void
+    {
+        $bookshelf = new BookShelf();
+        $bookshelf->set('a', new Book('A', 100, 'Author A'));
+        $bookshelf->set('b', new Book('B', 200, 'Author B'));
+        $bookshelf->set('c', new Book('C', 300, 'Author C'));
+
+        $bookshelf = new LazyMatchingCollection($bookshelf);
+
+        $criteria1 = Criteria::create()
+            ->where(Criteria::expr()->eq('title', 'A'));
+
+        $result = $bookshelf->matching($criteria1);
+
+        $criteria2 = Criteria::create()
+            ->where(Criteria::expr()->gt('numOfPages', 50));
+
+        $result = $result->matching($criteria2);
+
+        $criteria3 = Criteria::create()
+            ->where(Criteria::expr()->contains('author', 'Author'));
+
+        $result = $result->matching($criteria3);
+
+        $this->assertSame(1, $result->count());
     }
 }

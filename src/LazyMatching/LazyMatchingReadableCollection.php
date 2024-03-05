@@ -18,8 +18,6 @@ use Doctrine\Common\Collections\ReadableCollection;
 use Doctrine\Common\Collections\Selectable;
 use Rekalogika\Collections\Decorator\Decorator\SelectableReadableCollectionDecorator;
 
-use function DeepCopy\deep_copy;
-
 /**
  * @template TKey of array-key
  * @template T
@@ -48,10 +46,10 @@ class LazyMatchingReadableCollection extends SelectableReadableCollectionDecorat
 
     public function __clone()
     {
-        /** @var ?Criteria */
-        $copy = deep_copy($this->criteria);
+        if ($this->criteria !== null) {
+            $this->criteria = clone $this->criteria;
+        }
 
-        $this->criteria = $copy;
         $this->resultCache = null;
     }
 
@@ -64,9 +62,9 @@ class LazyMatchingReadableCollection extends SelectableReadableCollectionDecorat
             return parent::getWrapped();
         } elseif ($this->resultCache !== null) {
             return $this->resultCache;
-        } else {
-            return $this->resultCache = parent::getWrapped()->matching($this->criteria);
         }
+        return $this->resultCache = parent::getWrapped()->matching($this->criteria);
+
     }
 
     public function matching(Criteria $criteria): ReadableCollection&Selectable
