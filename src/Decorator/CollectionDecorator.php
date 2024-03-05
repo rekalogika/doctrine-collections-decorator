@@ -29,7 +29,7 @@ class CollectionDecorator extends AbstractCollectionDecorator
     public function __construct(private Collection $wrapped)
     {
     }
-    
+
     /**
      * @return Collection<TKey,T>
      */

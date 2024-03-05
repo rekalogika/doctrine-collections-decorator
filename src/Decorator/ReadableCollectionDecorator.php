@@ -29,7 +29,7 @@ class ReadableCollectionDecorator extends AbstractReadableCollectionDecorator
     public function __construct(private ReadableCollection $wrapped)
     {
     }
-    
+
     /**
      * @return ReadableCollection<TKey,T>
      */
