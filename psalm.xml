@@ -25,6 +25,12 @@
             </errorLevel>
         </InvalidTemplateParam>
 
+        <DeprecatedMethod>
+            <errorLevel type="suppress">
+                <file name="src/LazyMatching/CriteriaUtil.php" />
+            </errorLevel>
+        </DeprecatedMethod>
+
         <!-- for earlier collection versions: -->
 
         <!-- <MoreSpecificReturnType>

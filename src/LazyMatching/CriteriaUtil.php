@@ -15,8 +15,6 @@ namespace Rekalogika\Collections\Decorator\LazyMatching;
 
 use Doctrine\Common\Collections\Criteria;
 
-use function DeepCopy\deep_copy;
-
 final class CriteriaUtil
 {
     private function __construct()
@@ -26,7 +24,7 @@ final class CriteriaUtil
     public static function mergeCriteria(Criteria $criteria1, Criteria $criteria2): Criteria
     {
         /** @var Criteria */
-        $criteria = deep_copy($criteria1);
+        $criteria = clone $criteria1;
 
         if ($criteria2->getFirstResult() !== null) {
             $criteria->setFirstResult($criteria2->getFirstResult());

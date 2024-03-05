@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.4
+
+* fix: fix error with `deep_copy()`, use `clone` instead
+
 ## 2.1.3
 
 * Improve lazy-matching test.
