@@ -40,7 +40,7 @@ class SelectableCollectionDecorator extends AbstractSelectableCollectionDecorato
 
         $this->wrapped = $wrapped;
     }
-    
+
     /**
      * @return Collection<TKey,T>&Selectable<TKey,T>
      */

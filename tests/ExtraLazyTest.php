@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace Rekalogika\Collections\Decorator\Tests;
 
 use PHPUnit\Framework\TestCase;
+use Rekalogika\Collections\Decorator\ExtraLazy\ExtraLazyCollection;
 use Rekalogika\Collections\Decorator\Tests\Model\Book;
 use Rekalogika\Collections\Decorator\Tests\Model\BookShelf;
-use Rekalogika\Collections\Decorator\ExtraLazy\ExtraLazyCollection;
 
 class ExtraLazyTest extends TestCase
 {

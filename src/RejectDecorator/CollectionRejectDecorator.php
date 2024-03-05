@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of rekalogika/doctrine-collections-Rejectdecorator package.
+ * This file is part of rekalogika/doctrine-collections-decorator package.
  *
  * (c) Priyadi Iman Nurcahyo <https://rekalogika.dev>
  *
@@ -29,7 +29,7 @@ class CollectionRejectDecorator extends AbstractCollectionRejectDecorator
     public function __construct(private Collection $wrapped)
     {
     }
-    
+
     /**
      * @return Collection<TKey,T>
      */
