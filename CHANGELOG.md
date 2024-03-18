@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.5
+
+* feat: add `LazyMatchingSelectable` for decorating non-collection `Selectable`
+  objects, like Doctrine repositories.
+
 ## 2.1.4
 
 * fix: fix error with `deep_copy()`, use `clone` instead
