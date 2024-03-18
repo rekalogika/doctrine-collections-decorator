@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.1.5
+## 2.2.0
 
 * feat: add `LazyMatchingSelectable` for decorating non-collection `Selectable`
   objects, like Doctrine repositories.
