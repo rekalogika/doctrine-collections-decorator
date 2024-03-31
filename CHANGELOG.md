@@ -2,6 +2,8 @@
 
 ## 2.3.0
 
+* feat: calling `slice()` on a `LazyMatchingReadableCollection` now should not
+  trigger initialization of the underlying collection.
 * test: improve `LazyMatchingTest`
 
 ## 2.2.0

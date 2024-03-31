@@ -79,4 +79,17 @@ class LazyMatchingReadableCollection extends SelectableReadableCollectionDecorat
 
         return $clone;
     }
+
+    public function slice(int $offset, ?int $length = null): array
+    {
+        if ($this->criteria === null) {
+            return parent::slice($offset, $length);
+        }
+
+        $criteria = (clone $this->criteria)
+            ->setFirstResult($offset)
+            ->setMaxResults($length);
+
+        return $this->matching($criteria)->toArray();
+    }
 }
