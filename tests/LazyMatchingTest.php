@@ -140,8 +140,7 @@ class LazyMatchingTest extends TestCase
 
         $bookshelf = new LazyMatchingCollection($bookshelf);
         $criteria = Criteria::create()
-            ->where(Criteria::expr()->gt('numOfPages', 60))
-            ->orderBy(['numOfPages' => Order::Ascending]);
+            ->where(Criteria::expr()->gt('numOfPages', 60));
 
         $filtered = $bookshelf->matching($criteria);
         $count = $filtered->count();
