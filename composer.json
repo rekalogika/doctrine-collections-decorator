@@ -34,10 +34,10 @@
         "doctrine/collections": "^2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.6",
+        "phpunit/phpunit": "^10.5",
         "phpstan/phpstan": "^1.10",
         "vimeo/psalm": "^5.15",
-        "psalm/plugin-phpunit": "^0.18.4",
+        "psalm/plugin-phpunit": "^0.18.4 || ^0.19",
         "symfony/phpunit-bridge": "^6.3 || ^7.0",
         "symfony/var-dumper": "^6.3 || ^7.0"
     }
