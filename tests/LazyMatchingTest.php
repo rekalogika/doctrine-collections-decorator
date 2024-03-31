@@ -79,24 +79,47 @@ class LazyMatchingTest extends TestCase
         $bookshelf->set('a', new Book('A', 100, 'Author A'));
         $bookshelf->set('b', new Book('B', 200, 'Author B'));
         $bookshelf->set('c', new Book('C', 300, 'Author C'));
+        $bookshelf->set('d', new Book('D', 50, 'Author C'));
+        $bookshelf->set('e', new Book('E', 20, 'Author C'));
+        $bookshelf->set('f', new Book('F', 500, 'Author C'));
 
         $bookshelf = new LazyMatchingCollection($bookshelf);
 
         $criteria1 = Criteria::create()
-            ->where(Criteria::expr()->eq('title', 'A'));
+            ->where(Criteria::expr()->eq('author', 'Author C'));
 
         $result = $bookshelf->matching($criteria1);
+        $this->assertEquals(
+            [
+                'c' => new Book('C', 300, 'Author C'),
+                'd' => new Book('D', 50, 'Author C'),
+                'e' => new Book('E', 20, 'Author C'),
+                'f' => new Book('F', 500, 'Author C')
+            ],
+            $result->toArray()
+        );
 
         $criteria2 = Criteria::create()
-            ->where(Criteria::expr()->gt('numOfPages', 50));
+            ->where(Criteria::expr()->gt('numOfPages', 60));
 
         $result = $result->matching($criteria2);
+        $this->assertEquals(
+            [
+                'c' => new Book('C', 300, 'Author C'),
+                'f' => new Book('F', 500, 'Author C')
+            ],
+            $result->toArray()
+        );
 
         $criteria3 = Criteria::create()
-            ->where(Criteria::expr()->contains('author', 'Author'));
+            ->where(Criteria::expr()->contains('title', 'C'));
 
         $result = $result->matching($criteria3);
-
-        $this->assertSame(1, $result->count());
+        $this->assertEquals(
+            [
+                'c' => new Book('C', 300, 'Author C')
+            ],
+            $result->toArray()
+        );
     }
 }
