@@ -30,7 +30,7 @@ class CollectionDecoratorTest extends TestCase
     /**
      * @return iterable<array-key,array<array-key,object>>
      */
-    public function collectionProvider(): iterable
+    public static function collectionProvider(): iterable
     {
         $bookShelf = new BookShelf();
         $bookShelf->set('a', new Book('A'));

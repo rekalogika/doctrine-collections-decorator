@@ -11,7 +11,7 @@ psalm:
 
 .PHONY: phpunit
 phpunit:
-	vendor/bin/phpunit --testdox -v
+	vendor/bin/phpunit
 
 .PHONY: php-cs-fixer
 php-cs-fixer: tools/php-cs-fixer

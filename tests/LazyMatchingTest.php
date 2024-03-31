@@ -15,7 +15,6 @@ namespace Rekalogika\Collections\Decorator\Tests;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-use Doctrine\Common\Collections\Order;
 use PHPUnit\Framework\TestCase;
 use Rekalogika\Collections\Decorator\LazyMatching\LazyMatchingCollection;
 use Rekalogika\Collections\Decorator\LazyMatching\LazyMatchingReadableCollection;
