@@ -63,4 +63,13 @@ class LazyMatchingReadableCollectionFromSelectable extends SelectableReadableCol
 
         return $clone;
     }
+
+    public function slice(int $offset, ?int $length = null): array
+    {
+        $criteria = (clone $this->criteria)
+            ->setFirstResult($offset)
+            ->setMaxResults($length);
+
+        return $this->matching($criteria)->toArray();
+    }
 }

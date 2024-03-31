@@ -15,12 +15,14 @@ namespace Rekalogika\Collections\Decorator\Tests;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\Order;
 use PHPUnit\Framework\TestCase;
 use Rekalogika\Collections\Decorator\LazyMatching\LazyMatchingCollection;
 use Rekalogika\Collections\Decorator\LazyMatching\LazyMatchingReadableCollection;
 use Rekalogika\Collections\Decorator\Tests\Model\Book;
 use Rekalogika\Collections\Decorator\Tests\Model\BookShelf;
 use Rekalogika\Collections\Decorator\Tests\Model\SelectableInterceptor;
+use Rekalogika\Collections\Decorator\Tests\Model\SliceInterceptor;
 
 class LazyMatchingTest extends TestCase
 {
@@ -121,5 +123,39 @@ class LazyMatchingTest extends TestCase
             ],
             $result->toArray()
         );
+    }
+
+    public function testSlice(): void
+    {
+        $bookshelf = new BookShelf();
+        $bookshelf->set('a', new Book('A', 100, 'Author A'));
+        $bookshelf->set('b', new Book('B', 200, 'Author B'));
+        $bookshelf->set('c', new Book('C', 300, 'Author C'));
+        $bookshelf->set('d', new Book('D', 50, 'Author C'));
+        $bookshelf->set('e', new Book('E', 20, 'Author C'));
+        $bookshelf->set('f', new Book('F', 500, 'Author C'));
+
+        $bookshelf = new SliceInterceptor($bookshelf);
+        $realBookShelf = $bookshelf;
+
+        $bookshelf = new LazyMatchingCollection($bookshelf);
+        $criteria = Criteria::create()
+            ->where(Criteria::expr()->gt('numOfPages', 60))
+            ->orderBy(['numOfPages' => Order::Ascending]);
+
+        $filtered = $bookshelf->matching($criteria);
+        $count = $filtered->count();
+        $this->assertSame(4, $count);
+
+        $sliced = $filtered->slice(1, 2);
+        $this->assertEquals(
+            [
+                'b' => new Book('B', 200, 'Author B'),
+                'c' => new Book('C', 300, 'Author C'),
+            ],
+            $sliced
+        );
+
+        $this->assertEquals(0, $realBookShelf->getSliceCount());
     }
 }
