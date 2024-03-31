@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.3.0
+
+* test: improve `LazyMatchingTest`
+
 ## 2.2.0
 
 * feat: add `LazyMatchingSelectable` for decorating non-collection `Selectable`
